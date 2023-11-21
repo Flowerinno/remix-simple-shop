@@ -1,0 +1,127 @@
+.container {
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	cursor: pointer;
+	padding: 10px;
+}
+
+.filters_container {
+	align-self: flex-start;
+	display: flex;
+	gap: 20px;
+}
+
+.orderby {
+	border-radius: 15px;
+	border: 1px solid gray;
+	padding: 10px;
+	width: 150px;
+}
+
+.filters {
+	display: flex;
+	gap: 15px;
+}
+
+.filter {
+	display: flex;
+	gap: 10px;
+}
+
+.search_el {
+	display: flex;
+	align-items: flex-end;
+	gap: 10px;
+}
+
+.orderby_container {
+	display: flex;
+	flex-flow: column;
+	gap: 2px;
+}
+
+.item_buttons {
+	display: flex;
+	gap: 5px;
+}
+
+.products_wrapper {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	cursor: pointer;
+	padding: 10px;
+}
+
+.list_item {
+	width: 200px;
+	height: 200px;
+	border-radius: 15px;
+	padding: 10px;
+	border: 1px solid gray;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+}
+
+.title {
+	font-size: 0.6rem;
+	font-weight: bold;
+}
+
+img {
+	border-radius: 20px;
+}
+
+.btn {
+	border-radius: 15px;
+	border: 1px solid rgb(235, 110, 110);
+	padding: 5px;
+	width: 90px;
+	background-color: rgb(235, 110, 110);
+	cursor: pointer;
+}
+
+.btn:hover {
+	scale: 1.03;
+	background-color: green;
+	border: 1px solid green;
+	color: white;
+}
+
+.pagination {
+	display: flex;
+	gap: 5px;
+}
+
+.pagination_item {
+	border-radius: 15px;
+	border: 1px solid gray;
+	padding: 5px;
+	width: 30px;
+	min-width: 30px;
+	min-height: 30px;
+	background-color: gray;
+	cursor: pointer;
+	text-align: center;
+	cursor: pointer;
+}
+
+.active {
+	background-color: rgb(235, 110, 110);
+	border: 1px solid rgb(235, 110, 110);
+	cursor: pointer;
+}
+
+.pagination {
+	display: flex;
+	gap: 5px;
+	align-items: flex-end;
+}

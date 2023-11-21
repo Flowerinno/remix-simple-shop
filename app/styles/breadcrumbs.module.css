@@ -1,0 +1,22 @@
+.container {
+	display: flex;
+	align-self: flex-start;
+	position: absolute;
+	left: -5px;
+	top: -15px;
+	gap: 5px;
+	list-style: none;
+}
+
+.crumb {
+	text-decoration: none;
+	font-weight: 450;
+	color: green;
+	font-size: 16px;
+}
+
+.crumb:hover {
+	text-decoration: underline;
+	cursor: pointer;
+	color: red;
+}
