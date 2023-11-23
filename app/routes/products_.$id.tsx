@@ -1,13 +1,7 @@
 import { ActionFunctionArgs, LoaderFunctionArgs, json } from "@remix-run/node";
-import {
-	useLoaderData,
-	MetaFunction,
-	useFetcher,
-	Form,
-	useActionData,
-} from "@remix-run/react";
+import { useLoaderData, MetaFunction, useFetcher } from "@remix-run/react";
 import { getProduct } from "../services/products.server";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import invariant from "tiny-invariant";
 
 import styles from "../styles/product.module.css";
@@ -15,6 +9,8 @@ import styles from "../styles/product.module.css";
 import { Breadcrumbs } from "~/components";
 import { commitSession, getSession } from "~/services/sessions.server";
 import { cart } from "~/services/cart.server";
+
+import mediumZoom, { ZoomSelector } from "medium-zoom";
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
 	return [
@@ -86,9 +82,26 @@ export default function Product() {
 	const fetcher = useFetcher();
 
 	const [image, setImage] = useState(product.images[0]);
+	const [isZoomed, setIsZoomed] = useState(false);
 
 	const imageHandler = (img: string) => {
 		setImage(img);
+	};
+
+	const handleZoom = () => {
+		if (isZoomed) {
+			setIsZoomed(false);
+			return;
+		}
+
+		const element = document.getElementById("zoom-image") as HTMLElement;
+		if (element && element.parentElement) {
+			mediumZoom(element, {
+				background: "transparent",
+				container: element.parentElement,
+			});
+			setIsZoomed(true);
+		}
 	};
 
 	return (
@@ -103,9 +116,12 @@ export default function Product() {
 				<section className={styles.body}>
 					<div className={styles.image_container}>
 						<img
+							id="zoom-image"
 							className={styles.preview}
 							src={image}
 							alt={`image-${product.id}`}
+							onClick={handleZoom}
+							onMouseLeave={() => setIsZoomed(false)}
 						/>
 
 						<div className={styles.image_gallery}>

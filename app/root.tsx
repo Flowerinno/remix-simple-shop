@@ -1,5 +1,4 @@
 import {
-	redirect,
 	type ActionFunctionArgs,
 	type LinksFunction,
 	type LoaderFunctionArgs,
@@ -13,6 +12,7 @@ import {
 	Outlet,
 	Scripts,
 	ScrollRestoration,
+	useLocation,
 } from "@remix-run/react";
 import { cssBundleHref } from "@remix-run/css-bundle";
 
@@ -20,6 +20,7 @@ import appCSS from "./styles/app.css";
 import { Layout } from "./components";
 import { commitSession, getSession } from "./services/sessions.server";
 import { cart } from "./services/cart.server";
+import { AnimatePresence, motion } from "framer-motion";
 
 export const links: LinksFunction = () => [
 	...(cssBundleHref
@@ -83,7 +84,17 @@ export default function App() {
 			</head>
 			<body>
 				<Layout>
-					<Outlet />
+					<AnimatePresence mode="wait" initial={false}>
+						<motion.main
+							key={useLocation().pathname}
+							initial={{ opacity: 0.5 }}
+							animate={{ x: "0", opacity: 1 }}
+							exit={{ opacity: 0 }}
+							transition={{ duration: 0.2 }}
+						>
+							<Outlet />
+						</motion.main>
+					</AnimatePresence>
 				</Layout>
 				<ScrollRestoration />
 				<Scripts />

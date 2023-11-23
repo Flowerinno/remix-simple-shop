@@ -1,0 +1,30 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 400px;
+	gap: 20px;
+}
+
+.input {
+	padding: 15px;
+	outline: none;
+	border-radius: 20px;
+	border: none;
+	width: 375px;
+	font-size: 16px;
+}
+
+.btn {
+	font-size: 16px;
+	padding: 15px;
+	border-radius: 20px;
+	border: none;
+	cursor: pointer;
+}
+
+.btn:hover {
+	color: white;
+	background-color: green;
+}

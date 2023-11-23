@@ -1,4 +1,3 @@
-// app/sessions.ts
 import { createCookieSessionStorage } from "@remix-run/node"; // or cloudflare/deno
 
 type SessionData = {
@@ -9,16 +8,18 @@ type SessionFlashData = {
 	error: string;
 };
 
-const { getSession, commitSession, destroySession } =
-	createCookieSessionStorage<SessionData, SessionFlashData>({
-		cookie: {
-			name: "store",
-			httpOnly: true,
-			maxAge: 60 * 60 * 24 * 30, // 30 days
-			path: "/",
-			sameSite: "lax",
-			secrets: ["test"],
-		},
-	});
+export const sessionStorage = createCookieSessionStorage<
+	SessionData,
+	SessionFlashData
+>({
+	cookie: {
+		name: "__session",
+		httpOnly: true,
+		maxAge: 60 * 60 * 24 * 30, // 30 days
+		path: "/",
+		sameSite: "lax",
+		secrets: ["test"],
+	},
+});
 
-export { getSession, commitSession, destroySession };
+export const { getSession, commitSession, destroySession } = sessionStorage;

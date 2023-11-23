@@ -19,7 +19,7 @@ export class Cart {
 	}
 
 	initiate() {
-		return this.session.set("store", store);
+		return this.session.set("__session", store);
 	}
 
 	async resetSession() {
@@ -29,7 +29,7 @@ export class Cart {
 	add(productId: number) {
 		const store = this.get();
 		store.push(productId);
-		this.session.set("store", store);
+		this.session.set("__session", store);
 	}
 
 	remove(productId: number) {
@@ -38,11 +38,11 @@ export class Cart {
 		if (index > -1) {
 			store.splice(index, 1);
 		}
-		this.session.set("store", store);
+		this.session.set("__session", store);
 	}
 
 	get() {
-		return this.session.get("store") || [];
+		return this.session.get("__session") || [];
 	}
 }
 

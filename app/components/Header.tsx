@@ -54,6 +54,9 @@ export function Header() {
 						{(store && store?.length) ?? ""}
 					</span>
 				</Link>
+				<Link to="/login" className={styles.link}>
+					Login
+				</Link>
 			</div>
 		</div>
 	);
