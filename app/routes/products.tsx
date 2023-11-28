@@ -30,16 +30,14 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 		return redirect(`/products/search`);
 	}
 
-	let data = await getProducts();
-
-	let products = data.products;
+	let products = await getProducts();
 
 	if (order) {
 		products =
-			order === "desc" ? sortDesc(data.products) : sortAsc(data.products);
+			order === "desc" ? sortDesc(products) : sortAsc(products);
 	}
 
-	const totalPages = Math.ceil(data.products.length / 5);
+	const totalPages = Math.ceil(products.length / 5);
 
 	if (+pagination > totalPages) {
 		pagination = 1;
